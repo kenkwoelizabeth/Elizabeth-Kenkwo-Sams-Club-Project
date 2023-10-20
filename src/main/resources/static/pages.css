@@ -54,13 +54,13 @@ h1 {
     padding-bottom: 1em;
 }
 
-.blogContainer {
+.storeContainer {
     width: 90%;
     height: auto;
     align-self: center;
 }
 
-.blogText {
+.storeText {
     font-size: 1.2em;
     white-space: pre-wrap;
     overflow: hidden;
@@ -70,8 +70,8 @@ h1 {
 
 .card-title,
 .card-text,
-.blogText,
-.blogTitle {
+.storeText,
+.storeTitle {
     pointer-events: none;
 }
 
@@ -94,11 +94,11 @@ h1 {
 }
 
 .navbar a,
-#blogTitleHelp {
+#storeTitleHelp {
     color: var(--primary-text);
 }
 
-#blogTitleHelp {
+#storeTitleHelp {
     pointer-events: none;
 }
 
@@ -209,6 +209,6 @@ footer {
     margin-bottom: 0;
 }
 
-.blogContainer {
+.storeContainer {
     min-height: 75.5vh;
 }

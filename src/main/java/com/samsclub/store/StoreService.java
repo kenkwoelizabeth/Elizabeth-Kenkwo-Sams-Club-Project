@@ -13,5 +13,6 @@ public interface StoreService {
     public Store getStoreById(long storeId);
 
     public void deleteStore(long storeId);
+
     public List<Store> getStoreByName(String storeName);
 }

@@ -1,7 +1,7 @@
 package com.samsclub.store;
 
 
-import com.samsclub.exception.StoreNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,17 +11,17 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class StoreRestController {
 
-
+    @Autowired
     private StoreService storeService;
 
 
     @GetMapping("stores")
-    public List<Store> createStore() {
+    public Store createStore(@RequestBody Store store) {
 
-        return storeService.getAllStores();
+        return storeService.createStore(store);
     }
 
-    @GetMapping("stores")
+    @GetMapping("my-stores")
     public List<Store> getStores() {
 
         return storeService.getAllStores();
@@ -35,9 +35,9 @@ public class StoreRestController {
         return ResponseEntity.ok(existingStore);
     }
 
-    @PutMapping("/updateStore")
-    public String updateStore(@PathVariable ("id") long storeId, @RequestBody Store store) {
-storeService.updateStore(storeId, store);
+    @PutMapping("store/{id}")
+    public String updateStore(@PathVariable("id") long storeId, @RequestBody Store store) {
+        storeService.updateStore(storeId, store);
         return "redirect:/myStores";
     }
 
@@ -46,7 +46,6 @@ storeService.updateStore(storeId, store);
         storeService.deleteStore(storeId);
         return "redirect:/stores";
     }
-
 
 
 }
