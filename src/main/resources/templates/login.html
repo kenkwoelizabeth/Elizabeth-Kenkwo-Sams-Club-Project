@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +14,7 @@
     <link href="pages.css" type="text/css" rel="stylesheet"/>
     <title>Store Management Application</title>
 </head>
+
 
 <style>
 
@@ -245,64 +245,40 @@ footer {
     <nav class="navbar navbar-expand-lg">
         <i class="bi bi-file-post"></i>
         <h1>Store Management Application</h1>
-        <a class="login btn btn-primary" th:href="@{/login}">Login</a>
     </nav>
 </header>
+<!--------------Navbar Section Ends here-------------------->
 
 <main>
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="display-4">Welcome to Sam's Club <br> Store Management Application</h1>
-            <p class="lead">The process of opening new stores and managing their inventory is manual and time-consuming.
-                This results in inefficiencies, inaccuracies, and delays in store operations. To
-                address these challenges, we propose the development of a comprehensive store management
-                application.
-            </p>
+
+
+    <div class="container loginContainer">
+
+
+        <h1>Login</h1>
+        <form th:action="@{/login}" method="post">
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                       required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password"
+                       placeholder="Password"
+                       required>
+                <label><input type="checkbox" id="show-password">Show Password</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">Invalid username or password.</div>
         </div>
-    </section>
-    <section class="container mt-3">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card feature-card">
-                    <div class="card-body">
-                        <i class="feature-icon bi bi-file-text"></i>
-                        <h5 class="card-title">Store Section</h5>
-                        <p class="card-text">Write and publish captivating articles that resonate with your
-                            audience.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card feature-card">
-                    <div class="card-body">
-                        <i class="feature-icon bi bi-code-slash"></i>
-                        <h5 class="card-title">Item Section</h5>
-                        <p class="card-text">Stay up-to-date with the latest trends and best practices from the
-                            development community.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-4">
-                <div class="card feature-card">
-                    <div class="card-body">
-                        <i class="feature-icon bi bi-chat-dots"></i>
-                        <h5 class="card-title">Purchase Order Section</h5>
-                        <p class="card-text">Make your voice heard and stay engaged in the community.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-4">
-                <div class="card feature-card">
-                    <div class="card-body">
-                        <i class="feature-icon bi bi-people"></i>
-                        <h5 class="card-title">Users Section</h5>
-                        <p class="card-text">Connect with like-minded individuals, industry experts, and influencers
-                            to expand your network.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <p class="mt-3">Don't have an account? <a th:href="@{/registration}">Register here</a></p>
+    </div>
+
+
 </main>
 
 <footer class="landingFooter mt-auto py-3">
@@ -311,6 +287,19 @@ footer {
     </div>
 </footer>
 
-</body>
 
+<script>
+             const passwordInput = document.querySelector("#password");
+        const showPasswordCheckbox = document.querySelector("#show-password")
+
+        showPasswordCheckbox.addEventListener("click", () => {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+
+</script>
+</body>
 </html>

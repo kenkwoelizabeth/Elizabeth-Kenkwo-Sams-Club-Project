@@ -8,40 +8,40 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class StoreRestController {
 
     @Autowired
     private StoreService storeService;
 
 
-    @GetMapping("stores")
+    @GetMapping("/stores")
     public Store createStore(@RequestBody Store store) {
 
         return storeService.createStore(store);
     }
 
-    @GetMapping("my-stores")
+    @GetMapping("/my_stores")
     public List<Store> getStores() {
 
         return storeService.getAllStores();
 
     }
 
-    @GetMapping("store/{id}")
+    @GetMapping("/store/{id}")
     public ResponseEntity<Store> getStoreById(@PathVariable(value = "id") long storeId) {
         Store existingStore = storeService.getStoreById(storeId);
 
         return ResponseEntity.ok(existingStore);
     }
 
-    @PutMapping("store/{id}")
+    @PutMapping("/store/{id}")
     public String updateStore(@PathVariable("id") long storeId, @RequestBody Store store) {
         storeService.updateStore(storeId, store);
         return "redirect:/myStores";
     }
 
-    @DeleteMapping("stores/{id}")
+    @DeleteMapping("/stores/{id}")
     public String deleteStore(@PathVariable("id") long storeId) {
         storeService.deleteStore(storeId);
         return "redirect:/stores";
