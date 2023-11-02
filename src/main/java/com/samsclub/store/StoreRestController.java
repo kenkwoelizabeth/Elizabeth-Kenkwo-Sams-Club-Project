@@ -18,13 +18,13 @@ public class StoreRestController {
     @GetMapping("/stores")
     public Store createStore(@RequestBody Store store) {
 
-        return storeService.createStore(store);
+        return storeService.saveStore(store);
     }
 
     @GetMapping("/my_stores")
     public List<Store> getStores() {
 
-        return storeService.getAllStores();
+        return storeService.getAllStore();
 
     }
 

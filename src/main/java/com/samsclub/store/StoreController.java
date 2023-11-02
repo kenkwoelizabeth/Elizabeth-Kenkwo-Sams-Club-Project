@@ -19,10 +19,21 @@ public class StoreController {
     private StoreService storeService;
 
 
+    @GetMapping("/")
+    public String home() {
+        return "home";
+    }
+
+
+    @GetMapping("/cover")
+    public String coverPage(Model model) {
+
+        return "cover";
+    }
     // car page
     @GetMapping("/store")
     public String getAllStores(Model model) {
-        model.addAttribute("listCars", storeService.getAllStores());
+        model.addAttribute("listStores", storeService.getAllStore());
         return "store/store_list";
     }
 
@@ -35,7 +46,7 @@ public class StoreController {
     }
 
     @PostMapping("/saveStore")
-    public String saveStore(@ModelAttribute("car") @Valid Store store,
+    public String saveStore(@ModelAttribute("store") @Valid Store store,
                             BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
@@ -43,7 +54,7 @@ public class StoreController {
         }
 
         // save store to database
-        storeService.createStore(store);
+        storeService.saveStore(store);
         return "redirect:/store";
     }
 

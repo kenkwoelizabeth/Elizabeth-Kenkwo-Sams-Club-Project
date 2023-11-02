@@ -16,22 +16,23 @@ public class StoreServiceImpl implements StoreService {
 
 
     @Override
-    public Store createStore(Store store) {
+    public Store saveStore(Store store) {
         return storeRepo.save(store);
+    }
+
+    @Override
+    public List<Store> getAllStore() {
+        return storeRepo.findAll();
     }
 
     @Override
     public Store getStoreById(long storeId) {
         return storeRepo.findById(storeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Store does " +
-                        "not exist with the ID: " + storeId));
+                .orElseThrow(() -> new ResourceNotFoundException("Store does not exist with the ID: " + storeId));
 
     }
 
-    @Override
-    public List<Store> getAllStores() {
-        return storeRepo.findAll();
-    }
+
 
 
     @Override
@@ -59,10 +60,6 @@ public class StoreServiceImpl implements StoreService {
         storeRepo.delete(existingStore);
     }
 
-    @Override
-    public List<Store> getStoreByName(String storeName) {
 
-        return storeRepo.findByStoreName(storeName);
-    }
 
 }

@@ -1,10 +1,11 @@
 package com.samsclub.store;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.samsclub.item.Item;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -18,6 +19,11 @@ public class Store {
     private String storeLocation;
     private String storeType;
     private LocalDate openingDate;
+
+    @OneToMany(mappedBy="store")
+    private List<Item> item;
+
+
 
     // constructors
 
@@ -72,5 +78,13 @@ public class Store {
 
     public void setOpeningDate(LocalDate openingDate) {
         this.openingDate = openingDate;
+    }
+
+    public List<Item> getItem() {
+        return item;
+    }
+
+    public void setItem(List<Item> item) {
+        this.item = item;
     }
 }
