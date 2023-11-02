@@ -40,7 +40,6 @@ public class ItemServiceImpl implements ItemService{
         existingItem.setPrice(item.getPrice());
         existingItem.setInitialQuantity(item.getInitialQuantity());
         existingItem.setCategory(item.getCategory());
-        existingItem.setStore(item.getStore());
         return itemRepo.save(existingItem);
     }
 

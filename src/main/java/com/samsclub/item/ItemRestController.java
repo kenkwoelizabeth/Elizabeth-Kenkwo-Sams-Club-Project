@@ -16,9 +16,9 @@ public class ItemRestController {
     private ItemService itemService;
 
     @GetMapping("/items")
-    public Item createItem(@RequestBody Item item) {
+    public Item saveItem(@RequestBody Item item) {
 
-        return itemService.saveItem(item)
+        return itemService.saveItem(item);
     }
 
     @GetMapping("/my_items")

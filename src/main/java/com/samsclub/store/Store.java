@@ -1,11 +1,12 @@
 package com.samsclub.store;
 
+
 import com.samsclub.item.Item;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -17,12 +18,17 @@ public class Store {
     private long storeId;
     private String storeName;
     private String storeLocation;
+    private String storeContact;
     private String storeType;
-    private LocalDate openingDate;
 
-    @OneToMany(mappedBy="store")
+
+
+    @DateTimeFormat(pattern="MM-dd-yyyy")
+    private Date openingDate;
+
+    @OneToMany(targetEntity = Item.class,
+            fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<Item> item;
-
 
 
     // constructors
@@ -31,14 +37,16 @@ public class Store {
     public Store() {
     }
 
-    public Store(String storeName, String storeLocation, String storeType, LocalDate openingDate) {
+    public Store(String storeName, String storeLocation, String storeContact, String storeType, Date openingDate, List<Item> item) {
         this.storeName = storeName;
         this.storeLocation = storeLocation;
+        this.storeContact = storeContact;
         this.storeType = storeType;
         this.openingDate = openingDate;
+        this.item = item;
     }
 
-    //getters and setters
+//getters and setters
 
     public long getStoreId() {
         return storeId;
@@ -72,11 +80,19 @@ public class Store {
         this.storeType = storeType;
     }
 
-    public LocalDate getOpeningDate() {
+    public String getStoreContact() {
+        return storeContact;
+    }
+
+    public void setStoreContact(String storeContact) {
+        this.storeContact = storeContact;
+    }
+
+    public Date getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(LocalDate openingDate) {
+    public void setOpeningDate(Date openingDate) {
         this.openingDate = openingDate;
     }
 

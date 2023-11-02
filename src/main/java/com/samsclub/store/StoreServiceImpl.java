@@ -44,7 +44,9 @@ public class StoreServiceImpl implements StoreService {
         existingStore.setStoreName(store.getStoreName());
         existingStore.setStoreType(store.getStoreType());
         existingStore.setStoreLocation(store.getStoreLocation());
+        existingStore.setStoreContact(store.getStoreContact());
         existingStore.setOpeningDate(store.getOpeningDate());
+        existingStore.setItem(store.getItem());
 
         return storeRepo.save(existingStore);
     }

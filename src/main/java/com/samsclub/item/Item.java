@@ -1,28 +1,24 @@
 package com.samsclub.item;
 
 
+import com.samsclub.Category.Category;
 import org.apache.catalina.Store;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long itemId;
     private String itemName;
     private String description;
     private double price;
     private long initialQuantity;
     @ManyToOne
-    @JoinColumn(name="category_id", nullable=false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
-
-    @ManyToOne
-    @JoinColumn(name="store_id", nullable=false)
-    private Store store;
 
 
     // constructor
@@ -31,13 +27,13 @@ public class Item {
     public Item() {
     }
 
-    public Item(String itemName, String description, double price, long initialQuantity, Category category, Store store) {
+    public Item(String itemName, String description, double price, long initialQuantity, Category category) {
         this.itemName = itemName;
         this.description = description;
         this.price = price;
         this.initialQuantity = initialQuantity;
         this.category = category;
-        this.store = store;
+
     }
 
     public long getItemId() {
@@ -88,11 +84,4 @@ public class Item {
         this.category = category;
     }
 
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
-    }
 }
