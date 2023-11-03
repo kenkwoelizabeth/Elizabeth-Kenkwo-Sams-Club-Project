@@ -1,6 +1,5 @@
-package com.samsclub.Category;
+package com.samsclub.category;
 
-import com.samsclub.item.Item;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

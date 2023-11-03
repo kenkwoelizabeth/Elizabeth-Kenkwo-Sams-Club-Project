@@ -64,32 +64,26 @@
 
 
 <div class="container">
-    <h1>Sams Club Project</h1>
+    <h1>Store Management</h1>
     <hr>
-    <h2>Update Store</h2>
+    <h2>Update Purchase Order List</h2>
 
-    <form action="#" th:action="@{/saveStore}" th:object="${store}" method="POST">
+    <form action="#" th:action="@{/savePurchaseOrder}" th:object="${purchaseOrder}" method="POST">
 
         <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{storeId}"/>
-        <input type="text" th:field="*{storeName}" placeholder="Store Name" class="form-control mb-4 col-4" >
+        <input type="hidden" th:field="*{purchaseId}"/>
+        <input type="text" th:field="*{quantity}" placeholder="Quantity" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{storeLocation}" placeholder="Store Location" class="form-control mb-4 col-4" >
-        <input type="text" th:field="*{storeContact}" placeholder="Store Contact" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{storeType}" placeholder="Store Type" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{openingDate}" placeholder="Opening Date" class="form-control mb-4 col-4" >
+        <input type="text" th:field="*{status}" placeholder="Status" class="form-control mb-4 col-4">
 
 
-
-        <button type="submit" class="btn btn-info col-2"> Update Store</button>
+        <button type="submit" class="btn btn-info col-2"> Update Purchase Order </button>
     </form>
 
     <hr>
 
-    <p><a class="btn btn-outline-success" href="/store">
-        <i class="bi bi-arrow-left-square-fill"></i> Back to Store List</a>
+    <p><a class="btn btn-outline-success" href="/purchaseOrder ">
+        <i class="bi bi-arrow-left-square-fill"></i> Back to Purchase Order </a>
     </p>
 </div>
 </body>

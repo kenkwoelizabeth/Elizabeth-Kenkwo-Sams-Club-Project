@@ -42,7 +42,9 @@
                         <a class="nav-link text-white" href="purchaseOrder">Purchase Order</a>
                     </li>
 
-
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="supplier">Suppliers</a>
+                    </li>
 
 
                     <li class="nav-item">
@@ -60,13 +62,16 @@
 </header>
 
 
+
 <div class="container my-2">
     <h1>Item List</h1>
 
 
 
 
-    <a th:href="@{/my_items}" class="btn btn-primary btn-sm mb-3"> Add Item </a>
+        <a th:href="@{/my_items}" class="btn btn-primary btn-sm mb-3"> Add Item </a>
+
+
 
 
 
@@ -78,7 +83,6 @@
             <th>Description</th>
             <th>Price</th>
             <th>Initial Qty</th>
-            <th>Category</th>
             <th> Actions</th>
 
 
@@ -92,7 +96,6 @@
             <td th:text="${item.description}"></td>
             <td th:text="${item.price}"></td>
             <td th:text="${item.initialQuantity}"></td>
-            <td th:text="${item.Category.name}"></td>
             <td><a th:href="@{/my_items/{id}(id=${item.itemId})}"
                    class="btn btn-primary">Edit</a>
                 <a th:href="@{/deleteItem/{id}(id=${item.itemId})}"

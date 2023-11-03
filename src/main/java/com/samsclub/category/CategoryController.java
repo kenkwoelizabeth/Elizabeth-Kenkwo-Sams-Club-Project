@@ -1,6 +1,4 @@
-package com.samsclub.Category;
-
-
+package com.samsclub.category;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +27,7 @@ public class CategoryController {
     public String getMyCategories(Model model) {
         // create model attribute to bind form data
         Category category = new Category();
-        model.addAttribute("item", category);
+        model.addAttribute("category", category);
         return "category/new_category";
     }
 
@@ -57,7 +55,7 @@ public class CategoryController {
         return "category/update_category";
     }
 
-    @GetMapping("/deleteItem/{id}")
+    @GetMapping("/deleteCategory/{id}")
     public String deleteCategory(@PathVariable(value = "id") long categoryId) {
 
         // call delete store method

@@ -1,4 +1,4 @@
-package com.samsclub.Category;
+package com.samsclub.category;
 
 
 
@@ -41,7 +41,7 @@ public class CategoryRestController {
         return "redirect:/myCategories";
     }
 
-    @DeleteMapping("/items/{id}")
+    @DeleteMapping("/categories/{id}")
     public String deleteCategory(@PathVariable("id") long categoryId) {
         categoryService.deleteCategory(categoryId);
         return "redirect:/categories";

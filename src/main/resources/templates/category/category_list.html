@@ -62,35 +62,47 @@
 </header>
 
 
-
-<div class="container">
-    <h1>Sams Club Project</h1>
-    <hr>
-    <h2>Update Store</h2>
-
-    <form action="#" th:action="@{/saveStore}" th:object="${store}" method="POST">
-
-        <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{storeId}"/>
-        <input type="text" th:field="*{storeName}" placeholder="Store Name" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{storeLocation}" placeholder="Store Location" class="form-control mb-4 col-4" >
-        <input type="text" th:field="*{storeContact}" placeholder="Store Contact" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{storeType}" placeholder="Store Type" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{openingDate}" placeholder="Opening Date" class="form-control mb-4 col-4" >
+<div class="container my-2">
+    <h1>Category List</h1>
 
 
 
-        <button type="submit" class="btn btn-info col-2"> Update Store</button>
-    </form>
 
-    <hr>
+    <a th:href="@{/my_categories}" class="btn btn-primary btn-sm mb-3"> Add Category </a>
 
-    <p><a class="btn btn-outline-success" href="/store">
-        <i class="bi bi-arrow-left-square-fill"></i> Back to Store List</a>
-    </p>
+
+
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th> Actions</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category: ${listCategories}">
+            <td th:text="${category.categoryId}"></td>
+            <td th:text="${category.categoryName}"></td>
+
+            <td><a th:href="@{/my_categories/{id}(id=${category.categoryId})}"
+                   class="btn btn-primary">Edit</a>
+                <a th:href="@{/deleteCategory/{id}(id=${category.categoryId})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
+<div class="container my-2">
+    <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3"> Log out </a>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
+
 </body>
 </html>

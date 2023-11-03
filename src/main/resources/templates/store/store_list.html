@@ -42,7 +42,9 @@
                         <a class="nav-link text-white" href="purchaseOrder">Purchase Order</a>
                     </li>
 
-
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="supplier">Suppliers</a>
+                    </li>
 
 
                     <li class="nav-item">
@@ -58,6 +60,7 @@
         </div>
     </nav>
 </header>
+
 
 
 <div class="container my-2">
@@ -92,7 +95,8 @@
             <td th:text="${store.storeLocation}"></td>
             <td th:text="${store.storeContact}"></td>
             <td th:text="${store.storeType}"></td>
-            <td th:text="${store.openingDate}"></td>
+
+            <td th:text="${#dates.format(store.openingDate, 'yyyy-MM-dd')}"></td>
             <td><a th:href="@{/my_stores/{id}(id=${store.storeId})}"
                    class="btn btn-primary">Edit</a>
                 <a th:href="@{/deleteStore/{id}(id=${store.storeId})}"

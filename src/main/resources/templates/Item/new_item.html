@@ -42,6 +42,10 @@
                         <a class="nav-link text-white" href="purchaseOrder">Purchase Order</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="supplier">Suppliers</a>
+                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link text-white"  href="users.html"
@@ -58,6 +62,7 @@
 </header>
 
 
+
 <div class="container">
     <h1>Inventory System Management</h1>
     <hr>
@@ -65,14 +70,11 @@
 
     <form action="#" th:action="@{/saveItem}" th:object="${item}" method="POST">
         <input type="text" th:field="*{itemName}" placeholder="Item Name" class="form-control mb-4 col-4" >
-        <div th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}">Item Name Error</div>
+        <div th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}">Category Name Error</div>
         <input type="text" th:field="*{description}" placeholder="Description" class="form-control mb-4 col-4" >
         <input type="text" th:field="*{price}" placeholder="Price" class="form-control mb-4 col-4" >
 
         <input type="text" th:field="*{initialQuantity}" placeholder="Initial Quantity" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{category}" placeholder="Category" class="form-control mb-4 col-4" >
-
 
 
 

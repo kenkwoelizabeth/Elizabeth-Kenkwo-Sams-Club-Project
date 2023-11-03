@@ -62,35 +62,24 @@
 </header>
 
 
-
 <div class="container">
-    <h1>Sams Club Project</h1>
+    <h1>Inventory System Management</h1>
     <hr>
-    <h2>Update Store</h2>
+    <h2>Save Category</h2>
 
-    <form action="#" th:action="@{/saveStore}" th:object="${store}" method="POST">
-
-        <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{storeId}"/>
-        <input type="text" th:field="*{storeName}" placeholder="Store Name" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{storeLocation}" placeholder="Store Location" class="form-control mb-4 col-4" >
-        <input type="text" th:field="*{storeContact}" placeholder="Store Contact" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{storeType}" placeholder="Store Type" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{openingDate}" placeholder="Opening Date" class="form-control mb-4 col-4" >
+    <form action="#" th:action="@{/saveCategory}" th:object="${category}" method="POST">
+        <input type="text" th:field="*{categoryName}" placeholder="Category Name" class="form-control mb-4 col-4" >
+        <div th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}">Category Name Error</div>
 
 
 
-        <button type="submit" class="btn btn-info col-2"> Update Store</button>
+        <button type="submit" class="btn btn-info col-2"> Save Category</button>
     </form>
 
     <hr>
-
-    <p><a class="btn btn-outline-success" href="/store">
-        <i class="bi bi-arrow-left-square-fill"></i> Back to Store List</a>
-    </p>
-</div>
+    <p><a class="btn btn-outline-success" href="/category">
+        <i class="bi bi-arrow-left-square-fill"></i>Back to Category List</a>
+    </p></div>
 </body>
+
 </html>

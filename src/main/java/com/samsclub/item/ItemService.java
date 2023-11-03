@@ -2,6 +2,7 @@ package com.samsclub.item;
 
 
 import com.samsclub.store.Store;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +16,8 @@ public interface ItemService {
     public Item getItemById(long itemId);
     public Item updateItem(long itemId, Item item);
 
-
-
     public void deleteItem(long itemId);
+
 
 
 }

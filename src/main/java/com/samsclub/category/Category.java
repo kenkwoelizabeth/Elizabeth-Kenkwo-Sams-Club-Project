@@ -1,28 +1,29 @@
-package com.samsclub.Category;
+package com.samsclub.category;
 
-import com.samsclub.item.Item;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Category {
-
+public class Category implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long categoryId;
     private String categoryName;
 
-    @OneToMany(targetEntity = Item.class,
-    fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    private List<Item> item;
+
+
 
     public Category() {
     }
 
-    public Category(String categoryName, List<Item> item) {
+    public Category(String categoryName) {
         this.categoryName = categoryName;
-        this.item = item;
+
     }
 
     public long getCategoryId() {
@@ -41,11 +42,5 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public List<Item> getItem() {
-        return item;
-    }
 
-    public void setItem(List<Item> item) {
-        this.item = item;
-    }
 }

@@ -3,14 +3,12 @@ package com.samsclub.item;
 
 
 
+import com.samsclub.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -19,10 +17,15 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private CategoryService categoryService;
+
+
 
     @GetMapping("/item")
     public String getAllItems(Model model) {
         model.addAttribute("listItems", itemService.getAllItem());
+        model.addAttribute("listCategories", categoryService.getAllCategory());
         return "item/item_list";
     }
 
@@ -64,5 +67,12 @@ public class ItemController {
         // call delete store method
         this.itemService.deleteItem(itemId);
         return "redirect:/item";
+    }
+
+    @PostMapping("/search")
+    public String doSearchEmployee(@ModelAttribute("employeeSearchFormData") Item item, Model model) {
+        Item item1 =itemService.getItemById(item.getItemId());
+        model.addAttribute("item", item1);
+        return "item/item_list";
     }
 }

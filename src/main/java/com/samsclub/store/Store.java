@@ -1,16 +1,19 @@
 package com.samsclub.store;
 
 
+
 import com.samsclub.item.Item;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 
 @Entity
-public class Store {
+public class Store implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     //fields
     @Id
@@ -20,15 +23,14 @@ public class Store {
     private String storeLocation;
     private String storeContact;
     private String storeType;
-
+@OneToMany(mappedBy = "store")
+private List<Item> item;
 
 
     @DateTimeFormat(pattern="MM-dd-yyyy")
     private Date openingDate;
 
-    @OneToMany(targetEntity = Item.class,
-            fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    private List<Item> item;
+
 
 
     // constructors
@@ -37,15 +39,14 @@ public class Store {
     public Store() {
     }
 
-    public Store(String storeName, String storeLocation, String storeContact, String storeType, Date openingDate, List<Item> item) {
+    public Store(String storeName, String storeLocation, String storeContact, String storeType, List<Item> item, Date openingDate) {
         this.storeName = storeName;
         this.storeLocation = storeLocation;
         this.storeContact = storeContact;
         this.storeType = storeType;
-        this.openingDate = openingDate;
         this.item = item;
+        this.openingDate = openingDate;
     }
-
 //getters and setters
 
     public long getStoreId() {

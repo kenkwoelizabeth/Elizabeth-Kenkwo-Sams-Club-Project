@@ -1,14 +1,15 @@
 package com.samsclub.item;
 
 
-import com.samsclub.Category.Category;
-import org.apache.catalina.Store;
+
+import com.samsclub.store.Store;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.io.Serializable;
 
 @Entity
-public class Item {
+public class Item implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long itemId;
@@ -16,10 +17,10 @@ public class Item {
     private String description;
     private double price;
     private long initialQuantity;
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
 
+@ManyToOne
+@JoinColumn(name="store_id")
+private Store store;
 
     // constructor
 
@@ -27,13 +28,12 @@ public class Item {
     public Item() {
     }
 
-    public Item(String itemName, String description, double price, long initialQuantity, Category category) {
+    public Item(String itemName, String description, double price, long initialQuantity, Store store) {
         this.itemName = itemName;
         this.description = description;
         this.price = price;
         this.initialQuantity = initialQuantity;
-        this.category = category;
-
+        this.store = store;
     }
 
     public long getItemId() {
@@ -76,12 +76,11 @@ public class Item {
         this.initialQuantity = initialQuantity;
     }
 
-    public Category getCategory() {
-        return category;
+    public Store getStore() {
+        return store;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setStore(Store store) {
+        this.store = store;
     }
-
 }

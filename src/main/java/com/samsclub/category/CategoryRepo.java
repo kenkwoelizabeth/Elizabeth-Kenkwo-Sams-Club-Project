@@ -1,6 +1,5 @@
-package com.samsclub.Category;
+package com.samsclub.category;
 
-import com.samsclub.item.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

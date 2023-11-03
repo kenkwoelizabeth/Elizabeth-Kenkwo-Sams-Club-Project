@@ -1,5 +1,6 @@
 package com.samsclub.store;
 
+import com.samsclub.item.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 @Controller
 public class StoreController {
@@ -18,10 +21,24 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
 
-
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+
         return "home";
+    }
+
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession();
+        httpSession.invalidate();
+        return "redirect:/";
     }
 
 
@@ -76,4 +93,7 @@ public class StoreController {
         this.storeService.deleteStore(storeId);
         return "redirect:/store";
     }
+
+
+
 }

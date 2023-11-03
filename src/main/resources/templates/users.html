@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="/css/home.css" type="text/css" rel="stylesheet"/>
+
+  <title>Inventory Management</title>
+</head>
+<body>
+
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">Sams Club Group Project</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="/cover">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="item">Item</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="store">Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="category">Category</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="purchaseOrder">Purchase Order</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white" href="supplier">Suppliers</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link text-white"  href="users.html"
+               th:href="@{/users}">Users</a>
+          </li>
+
+        </ul>
+        <div>
+          <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3"> Logout </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    <!-- End navbar -->
+
+    <div class="container">
+      <h1>Users </h1>
+
+
+
+          <table class="table table-striped table-responsive-md">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Role</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="user : ${listUsers}">
+                <td th:text="${user.id}"></td>
+                <td class="px-3" th:text="${user.firstName}">First Name</td>
+                <td class="px-3" th:text="${user.lastName}">Last Name</td>
+                <td class="px-3" th:text="${user.email}">Email</td>
+
+                <td class="px-3" th:text="${user.roleSet[0].name.split('_',2)[1]}"></td>
+          <!--     <td class="px-3" th:each="role : ${user.roleSet}">
+                 <span th:text="${role.name.split('_',2)[1]}" ></span></td>  -->
+
+
+
+                <td><a th:href="@{/updateRole/{id}(id=${user.id})}"
+                       class="btn btn-primary">Update</a>
+                  <a th:href="@{/deleteUser/{id}(id=${user.id})}"
+                     class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+  </body>
+</html>
