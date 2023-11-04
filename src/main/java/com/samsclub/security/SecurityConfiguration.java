@@ -26,10 +26,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/images/**",
                         "/webjars/**", "/api/**").permitAll()
-                .antMatchers("/login", "/signup","/"
-                        ).permitAll()
+                .antMatchers("/login", "/signup", "/"
+                ).permitAll()
                 .antMatchers("/users", "/deleteUser/**", "/saveUser/**", "/showFormForUpdate/**")
-                .hasAnyRole("SUPERADMIN","USER")
+                .hasAnyRole("SUPERADMIN", "USER")
                 .antMatchers("/backEndCover", "/customer", "/my_customers", "/my_customers/**",
                         "/saveCustomer", "/deleteCustomer/**", "/salesInvoice", "/my_salesInvoice", "/my_salesInvoice/**", "/saveSalesInvoice",
                         "/deleteSalesInvoice/**", "/salesRep", "/my_salesReps", "/my_salesReps/**", "/saveSalesRep", "/deleteSalesRep/**")

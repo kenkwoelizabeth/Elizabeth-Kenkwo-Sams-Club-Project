@@ -27,23 +27,22 @@ public class SupplierRestController {
 
     @GetMapping("/supplier/{id}")
     public ResponseEntity<Supplier> getSupplierById(@PathVariable(value = "id") long supplierId) {
-        Supplier existingSupplier =supplierService.getSupplierById(supplierId);
+        Supplier existingSupplier = supplierService.getSupplierById(supplierId);
 
         return ResponseEntity.ok(existingSupplier);
     }
 
     @PutMapping("/supplier/{id}")
     public String updateSupplier(@PathVariable("id") long supplierId, @RequestBody Supplier supplier) {
-      supplierService.updateSupplier(supplierId,supplier);
+        supplierService.updateSupplier(supplierId, supplier);
         return "redirect:/mySupplier";
     }
 
     @DeleteMapping("/suppliers/{id}")
     public String deleteSupplier(@PathVariable("id") long supplierId) {
-       supplierService.deleteSupplier(supplierId);
+        supplierService.deleteSupplier(supplierId);
         return "redirect:/suppliers";
     }
-
 
 
 }

@@ -1,10 +1,11 @@
 package com.samsclub.supplier;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.samsclub.item.Item;
+import com.samsclub.purchaseOrder.PurchaseOrder;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Supplier implements Serializable {
@@ -18,19 +19,25 @@ public class Supplier implements Serializable {
     private String location;
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "supplier")
+    private List<Item> item;
 
+    @OneToMany(mappedBy = "supplier")
+    private List<PurchaseOrder> purchaseOrder;
     //constructors
 
     public Supplier() {
     }
 
-    public Supplier(String name, String location, String phoneNumber) {
+    public Supplier(String name, String location, String phoneNumber, List<Item> item, List<PurchaseOrder> purchaseOrder) {
         this.name = name;
         this.location = location;
         this.phoneNumber = phoneNumber;
+        this.item = item;
+        this.purchaseOrder = purchaseOrder;
     }
 
-//getters and setters
+    //getters and setters
 
 
     public long getSupplierId() {
@@ -65,5 +72,19 @@ public class Supplier implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    public List<Item> getItem() {
+        return item;
+    }
 
+    public void setItem(List<Item> item) {
+        this.item = item;
+    }
+
+    public List<PurchaseOrder> getPurchaseOrder() {
+        return purchaseOrder;
+    }
+
+    public void setPurchaseOrder(List<PurchaseOrder> purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
+    }
 }

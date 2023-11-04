@@ -11,7 +11,9 @@ public interface StoreService {
     public Store saveStore(Store store);
 
     public List<Store> getAllStore();
+
     public Store getStoreById(long storeId);
+
     public Store updateStore(long storeId, Store store);
 
     public void deleteStore(long storeId);

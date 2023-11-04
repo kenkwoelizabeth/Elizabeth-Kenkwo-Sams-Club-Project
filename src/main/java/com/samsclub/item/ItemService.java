@@ -13,11 +13,12 @@ public interface ItemService {
     public Item saveItem(Item item);
 
     public List<Item> getAllItem();
+
     public Item getItemById(long itemId);
+
     public Item updateItem(long itemId, Item item);
 
     public void deleteItem(long itemId);
-
 
 
 }

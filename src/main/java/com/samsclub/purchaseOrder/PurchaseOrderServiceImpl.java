@@ -1,7 +1,6 @@
 package com.samsclub.purchaseOrder;
 
 
-
 import com.samsclub.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +32,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     @Override
     public PurchaseOrder updatePurchaseOrder(long purchaseId, PurchaseOrder purchaseOrder) {
 
-        PurchaseOrder existingPurchaseOrder =purchaseOrderRepo.findById(purchaseId)
+        PurchaseOrder existingPurchaseOrder = purchaseOrderRepo.findById(purchaseId)
                 .orElseThrow(() -> new ResourceNotFoundException("Item does not exist with the ID: " + purchaseId));
 
         existingPurchaseOrder.setQuantity(purchaseOrder.getQuantity());
@@ -43,7 +42,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     @Override
     public void deletePurchaseOrder(long purchaseId) {
-        PurchaseOrder existingPurchaseOrder =purchaseOrderRepo.findById(purchaseId)
+        PurchaseOrder existingPurchaseOrder = purchaseOrderRepo.findById(purchaseId)
                 .orElseThrow(() -> new ResourceNotFoundException("PurchaseOrder does not exist with the ID: " + purchaseId));
         purchaseOrderRepo.delete(existingPurchaseOrder);
     }

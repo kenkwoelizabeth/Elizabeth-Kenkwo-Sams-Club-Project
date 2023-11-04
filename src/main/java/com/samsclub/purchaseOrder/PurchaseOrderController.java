@@ -1,8 +1,6 @@
 package com.samsclub.purchaseOrder;
 
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +19,6 @@ public class PurchaseOrderController {
     private PurchaseOrderService purchaseOrderService;
 
 
-
     @GetMapping("/purchaseOrder")
     public String getAllPurchaseOrders(Model model) {
         model.addAttribute("listPurchaseOrders", purchaseOrderService.getAllPurchaseOrder());
@@ -38,7 +35,7 @@ public class PurchaseOrderController {
 
     @PostMapping("/savePurchaseOrder")
     public String savePurchaseOrder(@ModelAttribute("purchaseOrder") @Valid PurchaseOrder purchaseOrder,
-                            BindingResult bindingResult) {
+                                    BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "purchaseOrder/new_purchaseOrder";
@@ -50,10 +47,10 @@ public class PurchaseOrderController {
     }
 
     @GetMapping("/my_purchaseOrders/{id}")
-    public String getPurchaseOrdersById(@PathVariable(value = "id") long  purchaseId, Model model) {
+    public String getPurchaseOrdersById(@PathVariable(value = "id") long purchaseId, Model model) {
 
         // get store from the service
-        PurchaseOrder purchaseOrder = purchaseOrderService.getPurchaseOrderById( purchaseId);
+        PurchaseOrder purchaseOrder = purchaseOrderService.getPurchaseOrderById(purchaseId);
 
         // set store as a model attribute to pre-populate the form
         model.addAttribute("purchaseOrder", purchaseOrder);
@@ -61,10 +58,10 @@ public class PurchaseOrderController {
     }
 
     @GetMapping("/deletePurchaseOrder/{id}")
-    public String deletePurchaseOrder(@PathVariable(value = "id") long  purchaseId) {
+    public String deletePurchaseOrder(@PathVariable(value = "id") long purchaseId) {
 
         // call delete store method
-        this.purchaseOrderService.deletePurchaseOrder( purchaseId);
+        this.purchaseOrderService.deletePurchaseOrder(purchaseId);
         return "redirect:/purchaseOrder";
 
     }

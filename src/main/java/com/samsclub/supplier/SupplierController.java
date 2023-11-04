@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+
 @Controller
 public class SupplierController {
     @Autowired
     private SupplierService supplierService;
-
 
 
     @GetMapping("/supplier")
@@ -27,26 +27,26 @@ public class SupplierController {
     @GetMapping("/my_suppliers")
     public String getMySuppliers(Model model) {
         // create model attribute to bind form data
-        Supplier supplier  = new Supplier();
+        Supplier supplier = new Supplier();
         model.addAttribute("supplier", supplier);
         return "supplier/new_supplier";
     }
 
     @PostMapping("/saveSupplier")
     public String saveSupplier(@ModelAttribute("supplier") @Valid Supplier supplier,
-                            BindingResult bindingResult) {
+                               BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "supplier/new_supplier";
         }
         // save menu to database
-       supplierService.saveSupplier(supplier);
+        supplierService.saveSupplier(supplier);
         return "redirect:/supplier";
     }
 
     @GetMapping("/my_suppliers/{id}")
     public String getSuppliersById(@PathVariable(value = "id") long supplierId, Model model) {
 
-        Supplier supplier  =supplierService.getSupplierById(supplierId);
+        Supplier supplier = supplierService.getSupplierById(supplierId);
         model.addAttribute("supplier", supplier);
 
         return "supplier/update_supplier";

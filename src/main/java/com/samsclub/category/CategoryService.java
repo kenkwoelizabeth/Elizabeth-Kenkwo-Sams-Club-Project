@@ -10,9 +10,10 @@ public interface CategoryService {
     public Category saveCategory(Category category);
 
     public List<Category> getAllCategory();
-    public Category getCategoryById(long categoryId);
-    public Category updateCategory(long categoryId, Category category);
 
+    public Category getCategoryById(long categoryId);
+
+    public Category updateCategory(long categoryId, Category category);
 
 
     public void deleteCategory(long categoryId);

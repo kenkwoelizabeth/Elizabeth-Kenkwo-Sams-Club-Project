@@ -33,8 +33,6 @@ public class StoreServiceImpl implements StoreService {
     }
 
 
-
-
     @Override
     public Store updateStore(long storeId, Store store) {
 
@@ -61,7 +59,6 @@ public class StoreServiceImpl implements StoreService {
 
         storeRepo.delete(existingStore);
     }
-
 
 
 }

@@ -11,11 +11,12 @@ public interface PurchaseOrderService {
     public PurchaseOrder savePurchaseOrder(PurchaseOrder purchaseOrder);
 
     public List<PurchaseOrder> getAllPurchaseOrder();
+
     public PurchaseOrder getPurchaseOrderById(long purchaseId);
+
     public PurchaseOrder updatePurchaseOrder(long purchaseId, PurchaseOrder purchaseOrder);
 
     public void deletePurchaseOrder(long purchaseId);
-
 
 
 }

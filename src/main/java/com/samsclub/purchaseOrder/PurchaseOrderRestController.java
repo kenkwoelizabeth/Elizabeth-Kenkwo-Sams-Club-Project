@@ -14,7 +14,7 @@ public class PurchaseOrderRestController {
     private PurchaseOrderService purchaseOrderService;
 
     @GetMapping("/purchaseOrders")
-    public PurchaseOrder savePurchaseOrder (@RequestBody PurchaseOrder purchaseOrder) {
+    public PurchaseOrder savePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
 
         return purchaseOrderService.savePurchaseOrder(purchaseOrder);
     }

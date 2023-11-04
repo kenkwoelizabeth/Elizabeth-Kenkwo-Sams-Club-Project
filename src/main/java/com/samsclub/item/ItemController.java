@@ -1,8 +1,6 @@
 package com.samsclub.item;
 
 
-
-
 import com.samsclub.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +17,6 @@ public class ItemController {
     private ItemService itemService;
     @Autowired
     private CategoryService categoryService;
-
 
 
     @GetMapping("/item")
@@ -39,7 +36,7 @@ public class ItemController {
 
     @PostMapping("/saveItem")
     public String saveItem(@ModelAttribute("item") @Valid Item item,
-                            BindingResult bindingResult) {
+                           BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "item/new_item";
@@ -71,7 +68,7 @@ public class ItemController {
 
     @PostMapping("/search")
     public String doSearchEmployee(@ModelAttribute("employeeSearchFormData") Item item, Model model) {
-        Item item1 =itemService.getItemById(item.getItemId());
+        Item item1 = itemService.getItemById(item.getItemId());
         model.addAttribute("item", item1);
         return "item/item_list";
     }

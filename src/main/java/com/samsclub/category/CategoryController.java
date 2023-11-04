@@ -33,7 +33,7 @@ public class CategoryController {
 
     @PostMapping("/saveCategory")
     public String saveCategory(@ModelAttribute("category") @Valid Category category,
-                           BindingResult bindingResult) {
+                               BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "category/new_category";

@@ -1,11 +1,11 @@
 package com.samsclub.category;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.samsclub.item.Item;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Category implements Serializable {
@@ -14,16 +14,15 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long categoryId;
     private String categoryName;
-
-
-
+    @OneToMany(mappedBy = "category")
+    private List<Item> item;
 
     public Category() {
     }
 
-    public Category(String categoryName) {
+    public Category(String categoryName, List<Item> item) {
         this.categoryName = categoryName;
-
+        this.item = item;
     }
 
     public long getCategoryId() {
@@ -42,5 +41,11 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
     }
 
+    public List<Item> getItem() {
+        return item;
+    }
 
+    public void setItem(List<Item> item) {
+        this.item = item;
+    }
 }

@@ -1,7 +1,6 @@
 package com.samsclub.store;
 
 
-
 import com.samsclub.item.Item;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,14 +22,12 @@ public class Store implements Serializable {
     private String storeLocation;
     private String storeContact;
     private String storeType;
-@OneToMany(mappedBy = "store")
-private List<Item> item;
+    @OneToMany(mappedBy = "store")
+    private List<Item> item;
 
 
-    @DateTimeFormat(pattern="MM-dd-yyyy")
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private Date openingDate;
-
-
 
 
     // constructors
@@ -47,7 +44,8 @@ private List<Item> item;
         this.item = item;
         this.openingDate = openingDate;
     }
-//getters and setters
+
+    //getters and setters
 
     public long getStoreId() {
         return storeId;
@@ -104,4 +102,6 @@ private List<Item> item;
     public void setItem(List<Item> item) {
         this.item = item;
     }
+
+
 }

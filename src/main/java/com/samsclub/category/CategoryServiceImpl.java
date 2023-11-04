@@ -1,12 +1,12 @@
 package com.samsclub.category;
 
 
-
 import com.samsclub.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category updateCategory(long categoryId, Category category) {
 
-        Category existingCategory =categoryRepo.findById(categoryId)
+        Category existingCategory = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category does not exist with the ID: " + categoryId));
         existingCategory.setCategoryName(category.getCategoryName());
 
@@ -41,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void deleteCategory(long categoryId) {
-        Category existingCategory =categoryRepo.findById(categoryId)
+        Category existingCategory = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category does not exist with the ID: " + categoryId));
         categoryRepo.delete(existingCategory);
     }
