@@ -11,4 +11,5 @@ import java.util.List;
 public interface ItemRepo extends JpaRepository<Item, Long> {
 
 
+    Item findByItemName(String item);
 }
