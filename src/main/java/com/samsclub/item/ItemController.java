@@ -66,10 +66,5 @@ public class ItemController {
         return "redirect:/item";
     }
 
-    @PostMapping("/search")
-    public String doSearchEmployee(@ModelAttribute("employeeSearchFormData") Item item, Model model) {
-        Item item1 = itemService.getItemById(item.getItemId());
-        model.addAttribute("item", item1);
-        return "item/item_list";
-    }
+
 }

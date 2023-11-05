@@ -59,3 +59,8 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
 Install MySQL, then update the username and password in the application.properties
 file, create a database call store db
+
+For the users and role if:
+firstname is admin during registration, you are assign an admin role
+firstname is manager during registration, you are assign a manager role
+everything else takes the role of a staff

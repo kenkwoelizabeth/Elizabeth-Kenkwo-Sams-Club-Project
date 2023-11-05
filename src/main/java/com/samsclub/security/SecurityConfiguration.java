@@ -26,15 +26,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/images/**",
                         "/webjars/**", "/api/**").permitAll()
-                .antMatchers("/login", "/signup", "/"
-                ).permitAll()
-                .antMatchers("/users", "/deleteUser/**", "/saveUser/**", "/showFormForUpdate/**")
-                .hasAnyRole("SUPERADMIN", "USER")
-                .antMatchers("/backEndCover", "/customer", "/my_customers", "/my_customers/**",
-                        "/saveCustomer", "/deleteCustomer/**", "/salesInvoice", "/my_salesInvoice", "/my_salesInvoice/**", "/saveSalesInvoice",
-                        "/deleteSalesInvoice/**", "/salesRep", "/my_salesReps", "/my_salesReps/**", "/saveSalesRep", "/deleteSalesRep/**")
-                .hasAnyRole("ADMIN", "SUPERADMIN")
-                .antMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
+                .antMatchers("/login", "/signup", "/",
+                        "/cover","/item","/supplier","/purchaseOrder","/store","/category").permitAll()
+                .antMatchers("/users", "/deleteUser/**", "/saveUser/**", "/showFormForUpdate/**","/item", "/my_items", "/my_items/**",
+                        "/saveItem", "/deleteItem/**","/deleteSupplier/**","/deleteStore/**","/deleteCategory/**")
+                .hasAnyRole("ADMIN")
+                .antMatchers(   "/my_purchaseOrders", "/my_purchaseOrders/**",
+                        "/savePurchaseOrder", "/deletePurchaseOrder/**")
+                .hasAnyRole("ADMIN", "MANAGER")
+
+
+                .antMatchers("/**").hasAnyRole("STAFF", "ADMIN", "MANAGER")
 
                 .anyRequest().authenticated()
                 .and()
