@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/webjars/**", "/api/**").permitAll()
                 .antMatchers("/login", "/signup", "/",
                         "/cover","/item","/supplier","/purchaseOrder","/store","/category").permitAll()
-                .antMatchers("/users", "/deleteUser/**", "/saveUser/**", "/showFormForUpdate/**","/item", "/my_items", "/my_items/**",
+                .antMatchers("/users", "/deleteUser/**", "/saveUser/**", "/showFormForUpdate/**", "/my_items", "/my_items/**",
                         "/saveItem", "/deleteItem/**","/deleteSupplier/**","/deleteStore/**","/deleteCategory/**")
                 .hasAnyRole("ADMIN")
                 .antMatchers(   "/my_purchaseOrders", "/my_purchaseOrders/**",
