@@ -3,6 +3,7 @@ package com.samsclub.store;
 import com.samsclub.item.Item;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,5 +18,12 @@ public interface StoreService {
     public Store updateStore(long storeId, Store store);
 
     public void deleteStore(long storeId);
+
+// Search methods
+    List<Store> findByStoreNameContaining(String StoreNameInfix);
+    List<Store> findByOpeningDateEquals(Date openingDate);
+
+    List<Store> findByStoreTypeContaining(String storeTypeInfix);
+    List<Store> findByStoreLocationContaining(String storeLocationInfix);
 
 }

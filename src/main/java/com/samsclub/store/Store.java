@@ -26,7 +26,8 @@ public class Store implements Serializable {
     private List<Item> item;
 
 
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date openingDate;
 
 

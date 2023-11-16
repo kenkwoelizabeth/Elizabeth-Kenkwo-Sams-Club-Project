@@ -757,3 +757,39 @@ visibility: visible;
 
  /* receipt Section Ends*/
 
+  /* Add some basic styling to the form */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* Style the label for better visibility */
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    /* Style the select dropdown */
+    select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Style the submit button */
+    input[type="submit"] {
+        background-color: #4caf50; /* Green */
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }

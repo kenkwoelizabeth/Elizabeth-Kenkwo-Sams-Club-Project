@@ -10,9 +10,73 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="/css/home.css" type="text/css" rel="stylesheet"/>
 
+    <style>
+
+      .card {
+        padding: 30px 40px;
+        margin-top: 0px;
+        margin-bottom: 60px;
+      }
+
+      .form-control-label {
+        margin-bottom: 0;
+      }
+
+      input,
+      textarea,
+      button {
+        padding: 8px 15px;
+        border-radius: 5px !important;
+        margin: 5px 0px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 18px !important;
+        font-weight: 300;
+      }
+
+      input:focus,
+      textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #00bcd4;
+        outline-width: 0;
+        font-weight: 400;
+      }
+
+      select {
+        margin: 5px 0px;
+        padding: 8px 15px;
+      }
+
+      .btn-block {
+        text-transform: uppercase;
+        font-size: 15px !important;
+        font-weight: 400;
+        height: 43px;
+        cursor: pointer;
+      }
+
+      .btn-block:hover {
+        color: #fff !important;
+        background-color: #24798a;
+      }
+
+      button:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0;
+      }
+
+    </style>
+
+
     <title>Inventory Management</title>
 </head>
 <body>
+
+
 
 <header>
 
@@ -64,30 +128,68 @@
 
 
 <div class="container">
-    <h1>Sams Club Project</h1>
+
+
+    <h2 style="text-align:center;">Update Store</h2>
     <hr>
-    <h2>Update Store</h2>
+
+
+
 
     <form action="#" th:action="@{/saveStore}" th:object="${store}" method="POST">
 
         <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{storeId}"/>
-        <input type="text" th:field="*{storeName}" placeholder="Store Name" class="form-control mb-4 col-4" >
-
-        <input type="text" th:field="*{storeLocation}" placeholder="Store Location" class="form-control mb-4 col-4" >
-        <input type="text" th:field="*{storeContact}" placeholder="Store Contact" class="form-control mb-4 col-4" >
-
-       <input type="text" th:field="*{storeType}" placeholder="Store Type" class="form-control mb-4 col-4" >
+        <input type="hidden" th:field="*{storeId}" />
 
 
+            <div
+                    class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+            >
+            <label class="form-control-label px-3">Store Name<span class="text-danger">*</span></label>
+            <input type="text" th:field="*{storeName}" placeholder="Store Name" class="form-control mb-4" required>
+        </div>
 
-        <input type="text" th:field="*{openingDate}" placeholder="Opening Date" class="form-control mb-4 col-4" >
+            <div
+                    class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+            >
+                <label class="form-control-label px-3">Store Location<span class="text-danger">*</span></label>
+            <input type="text" th:field="*{storeLocation}" placeholder="Store Location" class="form-control mb-4">
+        </div>
+
+            <div
+                    class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+            >
+                <label class="form-control-label px-3">Store Contact<span class="text-danger">*</span></label>
+            <input type="text" th:field="*{storeContact}" placeholder="Store Contact" class="form-control mb-4">
+        </div>
 
 
+                <div
+                        class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
+                    <label class="form-control-label px-3">Store Type<span class="text-danger">*</span></label>
+                <select name="StoreType" class="custom-select" th:field="*{storeType}">
+                    <option value="Retail" selected>Select Option</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Warehouse">Warehouse</option>
+                    <option value="Specialty">Specialty</option>
+                    <option value="Thrift">Thrift</option>
+                </select>
+            </div>
 
-        <button type="submit" class="btn btn-info col-2"> Update Store</button>
+
+            <div
+                    class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+            >
+                <label class="form-control-label px-3">Opening Date<span class="text-danger">*</span></label>
+            <input type="date" th:field="*{openingDate}" placeholder="Opening Date" class="form-control mb-4">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Update Store</button>
+        </div>
+
     </form>
-
     <hr>
 
     <p><a class="btn btn-outline-success" href="/store">

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class StoreController {
@@ -53,6 +55,7 @@ public class StoreController {
     @GetMapping("/store")
     public String getAllStores(Model model) {
         model.addAttribute("listStores", storeService.getAllStore());
+        model.addAttribute("storeQueryObj", new StoreQueryObj());
         return "store/store_list";
     }
 
@@ -97,4 +100,47 @@ public class StoreController {
     }
 
 
+    // SEARCH CONTROLLER
+
+    @PostMapping("/findStores")
+    public String findStores(@ModelAttribute StoreQueryObj storeQueryObj, Model model) {
+        System.out.println("qName is " + storeQueryObj.getQueryName());
+        System.out.println("qName is " + storeQueryObj.getQueryType());
+        System.out.println("qLocation is " + storeQueryObj.getQueryLocation());
+        System.out.println("qDate is " + storeQueryObj.getQueryOpeningDate());
+
+        Set<Store> storeSet = new HashSet<>();
+
+        if(storeQueryObj.getQueryName().isEmpty()
+                && storeQueryObj.getQueryLocation().isEmpty()
+                && storeQueryObj.getQueryType().isEmpty()
+                && storeQueryObj.getQueryOpeningDate()== null) {
+            System.out.println("all empty fields");
+
+            storeSet .addAll(storeService.getAllStore());
+        } else {
+            if (!storeQueryObj.getQueryName().isEmpty()) {
+                String name = storeQueryObj.getQueryName();
+                storeSet .addAll(storeService.findByStoreNameContaining(name));
+            }
+
+            if (!storeQueryObj.getQueryLocation().isEmpty()) {
+                storeSet.addAll(storeService.findByStoreLocationContaining(storeQueryObj.getQueryLocation()));
+            }
+
+            if (!storeQueryObj.getQueryType().isEmpty()) {
+                storeSet.addAll(storeService.findByStoreTypeContaining(storeQueryObj.getQueryLocation()));
+            }
+
+            if (storeQueryObj.getQueryOpeningDate() != null) {
+                storeSet.addAll(storeService.findByOpeningDateEquals(storeQueryObj.getQueryOpeningDate()));
+            }
+        }
+
+        model.addAttribute("listStores", storeSet);
+        model.addAttribute("storeQueryObj", new StoreQueryObj());
+        return "store/store_list";
+    }
 }
+
+

@@ -4,6 +4,7 @@ import com.samsclub.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -58,6 +59,28 @@ public class StoreServiceImpl implements StoreService {
                 .orElseThrow(() -> new ResourceNotFoundException("Store does not exist with the ID: " + storeId));
 
         storeRepo.delete(existingStore);
+    }
+
+
+    // search methods
+    @Override
+    public List<Store> findByStoreNameContaining(String storeNameInfix) {
+        return storeRepo.findByStoreNameContaining(storeNameInfix);
+    }
+
+    @Override
+    public List<Store> findByOpeningDateEquals(Date openingDate) {
+        return  storeRepo.findByOpeningDateEquals(openingDate);
+    }
+
+    @Override
+    public List<Store> findByStoreTypeContaining(String storeTypeInfix) {
+        return storeRepo.findByStoreTypeContaining(storeTypeInfix);
+    }
+
+    @Override
+    public List<Store> findByStoreLocationContaining(String storeLocationInfix) {
+        return storeRepo.findByStoreLocationContaining(storeLocationInfix);
     }
 
 
