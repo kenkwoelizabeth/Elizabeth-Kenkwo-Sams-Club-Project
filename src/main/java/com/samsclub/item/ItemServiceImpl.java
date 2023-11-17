@@ -1,7 +1,9 @@
 package com.samsclub.item;
 
 
+import com.samsclub.category.Category;
 import com.samsclub.exception.ResourceNotFoundException;
+import com.samsclub.store.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -40,6 +42,7 @@ public class ItemServiceImpl implements ItemService {
                 .orElseThrow(() -> new ResourceNotFoundException("Item does not exist with the ID: " + itemId));
         existingItem.setItemName(item.getItemName());
         existingItem.setDescription(item.getDescription());
+        existingItem.setCategory(item.getCategory());
         existingItem.setPrice(item.getPrice());
         existingItem.setInitialQuantity(item.getInitialQuantity());
 
@@ -53,8 +56,23 @@ public class ItemServiceImpl implements ItemService {
         itemRepo.delete(existingItem);
     }
 
+    @Override
+    public List<Item> findByItemNameContaining(String itemNameInfix) {
+        return itemRepo.findByItemNameContaining(itemNameInfix);
+    }
 
 
+    @Override
+    public List<Item> findByPriceBetween(Double minPrice, Double maxPrice) {
+       return itemRepo.findByPriceBetween(minPrice, maxPrice);
+        }
+
+
+
+    @Override
+    public List<Item> findByCategory(Category category) {
+        return itemRepo.findByCategory(category);
+    }
 
 }
 

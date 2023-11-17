@@ -23,13 +23,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category getCategoryById(long categoryId) {
+    public Category getCategoryById(Long categoryId) {
         return categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category does not exist with the ID: " + categoryId));
     }
 
     @Override
-    public Category updateCategory(long categoryId, Category category) {
+    public Category updateCategory(Long categoryId, Category category) {
 
         Category existingCategory = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category does not exist with the ID: " + categoryId));
@@ -40,7 +40,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteCategory(long categoryId) {
+    public void deleteCategory(Long categoryId) {
         Category existingCategory = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category does not exist with the ID: " + categoryId));
         categoryRepo.delete(existingCategory);

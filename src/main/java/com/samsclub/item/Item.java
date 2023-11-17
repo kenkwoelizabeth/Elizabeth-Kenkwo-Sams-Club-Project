@@ -26,7 +26,7 @@ public class Item implements Serializable {
     @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
     private Category category;
 

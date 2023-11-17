@@ -113,7 +113,7 @@ public class StoreController {
 
         if(storeQueryObj.getQueryName().isEmpty()
                 && storeQueryObj.getQueryLocation().isEmpty()
-                && storeQueryObj.getQueryType().isEmpty()
+                && storeQueryObj.getQueryType()==null
                 && storeQueryObj.getQueryOpeningDate()== null) {
             System.out.println("all empty fields");
 
@@ -128,8 +128,8 @@ public class StoreController {
                 storeSet.addAll(storeService.findByStoreLocationContaining(storeQueryObj.getQueryLocation()));
             }
 
-            if (!storeQueryObj.getQueryType().isEmpty()) {
-                storeSet.addAll(storeService.findByStoreTypeContaining(storeQueryObj.getQueryLocation()));
+            if (storeQueryObj.getQueryType()!=null) {
+                storeSet.addAll(storeService.findByStoreTypeContaining(storeQueryObj.getQueryType()));
             }
 
             if (storeQueryObj.getQueryOpeningDate() != null) {

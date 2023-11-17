@@ -12,7 +12,7 @@ public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long categoryId;
+    private Long categoryId;
     private String categoryName;
     @OneToMany(mappedBy = "category")
     private List<Item> item;
@@ -25,11 +25,11 @@ public class Category implements Serializable {
         this.item = item;
     }
 
-    public long getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(long categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 

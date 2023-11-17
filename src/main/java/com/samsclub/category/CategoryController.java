@@ -45,7 +45,7 @@ public class CategoryController {
     }
 
     @GetMapping("/my_categories/{id}")
-    public String getCategoriesById(@PathVariable(value = "id") long categoryId, Model model) {
+    public String getCategoriesById(@PathVariable(value = "id") Long categoryId, Model model) {
 
         // get store from the service
         Category category = categoryService.getCategoryById(categoryId);
@@ -56,7 +56,7 @@ public class CategoryController {
     }
 
     @GetMapping("/deleteCategory/{id}")
-    public String deleteCategory(@PathVariable(value = "id") long categoryId) {
+    public String deleteCategory(@PathVariable(value = "id") Long categoryId) {
 
         // call delete store method
         this.categoryService.deleteCategory(categoryId);

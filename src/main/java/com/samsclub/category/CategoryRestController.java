@@ -27,20 +27,20 @@ public class CategoryRestController {
     }
 
     @GetMapping("/category/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable(value = "id") long categoryId) {
+    public ResponseEntity<Category> getCategoryById(@PathVariable(value = "id") Long categoryId) {
         Category existingCategory = categoryService.getCategoryById(categoryId);
 
         return ResponseEntity.ok(existingCategory);
     }
 
     @PutMapping("/category/{id}")
-    public String updateCategory(@PathVariable("id") long categoryId, @RequestBody Category category) {
+    public String updateCategory(@PathVariable("id") Long categoryId, @RequestBody Category category) {
         categoryService.updateCategory(categoryId, category);
         return "redirect:/myCategories";
     }
 
     @DeleteMapping("/categories/{id}")
-    public String deleteCategory(@PathVariable("id") long categoryId) {
+    public String deleteCategory(@PathVariable("id") Long categoryId) {
         categoryService.deleteCategory(categoryId);
         return "redirect:/categories";
     }
