@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Inventory</title>
+</head>
+<body>
+<h2>Inventory for Store: <span th:text="${store.name}"></span></h2>
+<table border="1">
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+    </tr>
+    <tr th:each="inventory : ${inventory}">
+        <td th:text="${inventory.item.name}"></td>
+        <td th:text="${inventory.quantity}"></td>
+    </tr>
+</table>
+</body>
+</html>

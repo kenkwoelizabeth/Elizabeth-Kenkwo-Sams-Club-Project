@@ -30,13 +30,13 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item getItemById(long itemId) {
+    public Item getItemById(Long itemId) {
         return itemRepo.findById(itemId)
                 .orElseThrow(() -> new ResourceNotFoundException("Item does not exist with the ID: " + itemId));
     }
 
     @Override
-    public Item updateItem(long itemId, Item item) {
+    public Item updateItem(Long itemId, Item item) {
 
         Item existingItem = itemRepo.findById(itemId)
                 .orElseThrow(() -> new ResourceNotFoundException("Item does not exist with the ID: " + itemId));
@@ -50,7 +50,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void deleteItem(long itemId) {
+    public void deleteItem(Long itemId) {
         Item existingItem = itemRepo.findById(itemId)
                 .orElseThrow(() -> new ResourceNotFoundException("Item does not exist with the ID: " + itemId));
         itemRepo.delete(existingItem);

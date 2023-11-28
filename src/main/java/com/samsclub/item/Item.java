@@ -17,7 +17,7 @@ public class Item implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long itemId;
+    private Long itemId;
     private String itemName;
     private String description;
     private double price;
@@ -54,11 +54,11 @@ public class Item implements Serializable {
         this.purchaseOrder = purchaseOrder;
     }
 
-    public long getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(long itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 

@@ -55,7 +55,7 @@ public class ItemController {
     }
 
     @GetMapping("/my_items/{id}")
-    public String getItemsById(@PathVariable(value = "id") long itemId, Model model) {
+    public String getItemsById(@PathVariable(value = "id") Long itemId, Model model) {
 
         // get store from the service
         Item item = itemService.getItemById(itemId);
@@ -66,7 +66,7 @@ public class ItemController {
     }
 
     @GetMapping("/deleteItem/{id}")
-    public String deleteItem(@PathVariable(value = "id") long itemId) {
+    public String deleteItem(@PathVariable(value = "id") Long itemId) {
 
         // call delete store method
         this.itemService.deleteItem(itemId);

@@ -29,20 +29,20 @@ public class ItemRestController {
     }
 
     @GetMapping("/item/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable(value = "id") long itemId) {
+    public ResponseEntity<Item> getItemById(@PathVariable(value = "id") Long itemId) {
         Item existingItem = itemService.getItemById(itemId);
 
         return ResponseEntity.ok(existingItem);
     }
 
     @PutMapping("/item/{id}")
-    public String updateItem(@PathVariable("id") long itemId, @RequestBody Item item) {
+    public String updateItem(@PathVariable("id") Long itemId, @RequestBody Item item) {
         itemService.updateItem(itemId, item);
         return "redirect:/myItems";
     }
 
     @DeleteMapping("/items/{id}")
-    public String deleteItem(@PathVariable("id") long itemId) {
+    public String deleteItem(@PathVariable("id") Long itemId) {
         itemService.deleteItem(itemId);
         return "redirect:/items";
     }

@@ -16,11 +16,11 @@ public interface ItemService {
 
     public List<Item> getAllItem();
 
-    public Item getItemById(long itemId);
+    public Item getItemById(Long itemId);
 
-    public Item updateItem(long itemId, Item item);
+    public Item updateItem(Long itemId, Item item);
 
-    public void deleteItem(long itemId);
+    public void deleteItem(Long itemId);
 
 
     List<Item> findByItemNameContaining(String ItemNameInfix);

@@ -66,8 +66,6 @@ firstname is manager during registration, you are assign a manager role
 everything else takes the role of a staff
 
 ## Things I need to update later due to time constraint
-Dropdowns
-Search
+
 Add items to store
-Thymeleaf need to add the relationships to the different models
 Rectify my testing codes
